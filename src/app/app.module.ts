@@ -3,13 +3,15 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {MaybeComponent, SomeComponent, NoneComponent} from './maybe/maybe.component';
+import {MaybeDirective} from './maybe/maybe.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MaybeComponent,
     SomeComponent,
-    NoneComponent
+    NoneComponent,
+    MaybeDirective
   ],
   imports: [
     BrowserModule

@@ -7,10 +7,8 @@ import {Option, some, none, Some } from 'fp-ts/lib/Option'
     <ng-content></ng-content>
   `
 })
-export class SomeComponent {
-  option: Option<any> = none;
-
-  
+export class SomeComponent<T> {
+  value: T;
 }
 
 @Component({
@@ -20,7 +18,6 @@ export class SomeComponent {
   `
 })
 export class NoneComponent {
-  option: Option<any> = none;
 }
 
 @Component({
@@ -38,8 +35,8 @@ export class MaybeComponent<T> implements OnInit{
   @Input() 
   in: Promise<T>;
 
-  @ContentChild(SomeComponent) someComponent; 
-  @ContentChild(NoneComponent) noneComponent;
+  @ContentChild(SomeComponent) someComponent: SomeComponent<T>; 
+  @ContentChild(NoneComponent) noneComponent: NoneComponent;
 
   private option: Option<T> = none;
 
@@ -50,18 +47,11 @@ export class MaybeComponent<T> implements OnInit{
   }
 
   private setSome(value: T) {
-    console.log('setSome: ' + value);
-    this.option = some(value);
-    this.setChilds();
+    this.option = some(value)
+      .map(value => this.someComponent.value = value);
   }
 
   private setNone() {
     this.option = none;
-    this.setChilds();
-  }
-
-  private setChilds() {
-    this.someComponent.option = this.option;
-    this.noneComponent.option = this.option;
   }
 }

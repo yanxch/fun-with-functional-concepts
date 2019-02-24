@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'having-fun-with-functional-concepts';
 
-  data = new Promise((resolve, reject) => {
+  data = new Promise<string>((resolve, reject) => {
     setTimeout(() => {
       resolve('foo');
     }, 1000);
