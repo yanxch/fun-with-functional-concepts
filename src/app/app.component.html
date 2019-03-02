@@ -1,4 +1,4 @@
-<!--  1.
+<!--  1. Component and Content Projection
 
 <Maybe [in]="data">
   <Some #some>
@@ -12,12 +12,78 @@
 
 -->
 
+<!-- 2. Structural Directive
+
 <div *maybe="data; some someBlock none noneBlock"></div>
+
 <ng-template #someBlock let-value="some">
   <p>Got some data:</p>
   <p>{{ value }}</p>
   <p>{{ error }}</p>
 </ng-template>
+
 <ng-template #noneBlock let-error="error">
   No data coming
+</ng-template>
+
+-->
+
+
+<!-- 3. RemoteData with Components and Content Projection
+
+<RemoteData in="">
+  <NotAsked></NotAsked>
+  <Loading>...</Loading>
+  <Success #success>
+    <commit-list commits="success.value"></commit-list>
+  </Success>
+  <Failure #failure>
+    <Alert message="failure.value"></Alert>
+  </Failure>
+</RemoteData>
+-->
+  <div class="centered">
+    <mat-card class="github-card">
+      <mat-card-header>
+        <div mat-card-avatar class="github-avatar"></div>
+        <mat-card-title>Github Commits</mat-card-title>
+        <mat-card-subtitle>Search</mat-card-subtitle>
+      </mat-card-header>
+      <form class="github-form">
+        <mat-form-field class="github-form-field">
+          <div style="display: flex;">
+            <input 
+              matInput placeholder="Github Username" 
+              [(ngModel)]="username" name="username"
+              autocomplete="off">
+            <button mat-stroked-button (click)="onSearch()">Search</button>
+          </div>
+        </mat-form-field>
+      </form>
+      <div class="github-card-content">
+        <div *remoteData="data
+          onNotAsked notAskedTemplate
+          onLoading loadingTemplate 
+          onSuccess successTemplate 
+          onFailure failureTemplate">
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+
+<ng-template #notAskedTemplate>
+  Not Asked
+</ng-template>
+
+<ng-template #loadingTemplate>
+  Loading ...
+</ng-template>
+
+<ng-template #successTemplate let-success="success">
+  <commits [commits]="success"></commits>
+</ng-template>
+
+<ng-template #failureTemplate let-failure="failure">
+  Failure Template
 </ng-template>

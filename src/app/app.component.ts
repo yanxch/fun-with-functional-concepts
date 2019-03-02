@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {readCommitsByUsername, Commit} from 'src/api/commits.api';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'having-fun-with-functional-concepts';
 
-  data = new Promise<string>((resolve, reject) => {
-    setTimeout(() => {
-      resolve('foo');
-    }, 1000);
-  });
+  username = 'yanxch';
+
+  data: Promise<Commit[]>;
+
+  onSearch() {
+    this.data = readCommitsByUsername(this.username);
+    console.log('Clicked Search');
+  }
 }

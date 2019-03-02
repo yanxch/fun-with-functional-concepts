@@ -1,9 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {MatButtonModule, MatCheckboxModule, MatCardModule, MatInputModule, MatListModule, MatIconModule} from '@angular/material';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {MaybeComponent, SomeComponent, NoneComponent} from './maybe/maybe.component';
 import {MaybeDirective} from './maybe/maybe.directive';
+import {RemoteDataDirective} from './remote-data/remote-data.directive';
+import { CommitsComponent } from './commits/commits.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,10 +16,20 @@ import {MaybeDirective} from './maybe/maybe.directive';
     MaybeComponent,
     SomeComponent,
     NoneComponent,
-    MaybeDirective
+    MaybeDirective,
+    RemoteDataDirective,
+    CommitsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatInputModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
