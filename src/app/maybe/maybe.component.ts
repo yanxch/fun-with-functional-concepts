@@ -38,7 +38,7 @@ export class MaybeComponent<T> implements OnInit{
   @ContentChild(SomeComponent) someComponent: SomeComponent<T>; 
   @ContentChild(NoneComponent) noneComponent: NoneComponent;
 
-  private option: Option<T> = none;
+  option: Option<T> = none;
 
   ngOnInit() {
     this.in

@@ -1,5 +1,9 @@
+/* 
 import {Component, Input, OnInit, ContentChild} from '@angular/core';
 import {notAsked, RemoteData, success, failure} from './remote-data';
+
+
+Not Tested, not used
 
 @Component({
   selector: 'Success',
@@ -65,3 +69,5 @@ export class RemoteDataComponent<S, F> {
 
   constructor() {}
 }
+
+*/

@@ -73,7 +73,10 @@
 
 
 <ng-template #notAskedTemplate>
-  Not Asked
+  <div class="text-centered">
+    <p>No data loaded yet.</p>
+    <p>Please enter a username and press "Search".</p>
+  </div>
 </ng-template>
 
 <ng-template #loadingTemplate>
@@ -85,5 +88,7 @@
 </ng-template>
 
 <ng-template #failureTemplate let-failure="failure">
-  Failure Template
+  <div class="text-centered">
+    Oh my dear. We are sorry. Something went wrong
+  </div>
 </ng-template>
