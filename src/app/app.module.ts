@@ -9,6 +9,8 @@ import {MaybeDirective} from './maybe/maybe.directive';
 import {RemoteDataDirective} from './remote-data/remote-data.directive';
 import { CommitsComponent } from './commits/commits.component';
 import {FormsModule} from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from '../state/reducers';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {FormsModule} from '@angular/forms';
     MatCardModule,
     MatInputModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forRoot(reducers, { metaReducers })
   ],
   providers: [],
   bootstrap: [AppComponent]
