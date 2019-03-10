@@ -1,0 +1,45 @@
+<div class="centered">
+  <mat-card class="github-card">
+    <mat-card-header>
+      <div mat-card-avatar class="github-avatar"></div>
+      <mat-card-title>Github Commits</mat-card-title>
+      <mat-card-subtitle>Search</mat-card-subtitle>
+    </mat-card-header>
+    <form class="github-form">
+      <mat-form-field class="github-form-field">
+        <div style="display: flex;">
+          <input 
+            matInput placeholder="Github Username" 
+            [(ngModel)]="username" name="username"
+            autocomplete="off">
+          <button mat-stroked-button (click)="onSearch()">Search</button>
+        </div>
+      </mat-form-field>
+    </form>
+    <div class="github-card-content">
+      <ng-container #content></ng-container>
+    </div>
+  </mat-card>
+</div>
+  
+<ng-template #notAskedTemplate>
+  <div class="text-centered">
+    <p>No data loaded yet.</p>
+    <p>Please enter a username and press "Search".</p>
+  </div>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  Loading ...
+</ng-template>
+
+<ng-template #successTemplate let-commits="success">
+  <commits [commits]="commits"></commits>
+</ng-template>
+
+<ng-template #failureTemplate let-failure="failure">
+  <div class="text-centered">
+    <failure></failure>
+  </div>
+</ng-template>
+  

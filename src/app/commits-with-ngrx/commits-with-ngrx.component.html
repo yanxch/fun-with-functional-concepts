@@ -1,0 +1,34 @@
+<div class="centered">
+  <mat-card class="github-card">
+    <mat-card-header>
+      <div mat-card-avatar class="github-avatar"></div>
+      <mat-card-title>Github Commits</mat-card-title>
+      <mat-card-subtitle>Search</mat-card-subtitle>
+    </mat-card-header>
+    <form class="github-form">
+      <mat-form-field class="github-form-field">
+        <div style="display: flex;">
+          <input 
+            matInput placeholder="Github Username" 
+            [(ngModel)]="username" name="username"
+            autocomplete="off">
+          <button mat-stroked-button (click)="onSearch()">Search</button>
+        </div>
+      </mat-form-field>
+    </form>
+    <div class="github-card-content">
+      <ng-container *ngIf="commitsLoading$ | async">
+        Loading ...
+      </ng-container>
+      <ng-container *ngIf="!(commitsLoading$ | async)">
+        <commits [commits]="commits$ | async"></commits>
+      </ng-container>
+      <ng-container *ngIf="(commitsFailure$ | async) as failures">
+          <div class="text-centered" *ngIf="failures.length > 0">
+            <failure></failure>
+          </div>
+      </ng-container>
+    </div>
+  </mat-card>
+</div>
+

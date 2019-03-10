@@ -26,13 +26,13 @@ export const loading: Loading = {
   loading: true
 };
 
-export function success<S>(success: S) {
+export function success<S>(success: S): Success<S> {
   return {
     success
   };
 }
 
-export function failure<F>(failure: F) {
+export function failure<F>(failure: F): Failure<F> {
   return {
     failure
   };

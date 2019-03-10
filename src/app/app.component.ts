@@ -8,13 +8,4 @@ import {readCommitsByUsername, Commit} from 'src/api/commits.api';
 })
 export class AppComponent {
   title = 'having-fun-with-functional-concepts';
-
-  username = 'yanxch';
-
-  data: Promise<Commit[]>;
-
-  onSearch() {
-    this.data = readCommitsByUsername(this.username);
-    console.log('Clicked Search');
-  }
 }
