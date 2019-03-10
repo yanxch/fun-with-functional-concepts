@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {readCommitsByUsername, Commit} from 'src/api/commits.api';
+import {Component, OnInit} from '@angular/core';
+import {Commit, readCommitsByUsername} from 'src/api/commits.api';
 
 @Component({
   selector: 'commits-with-remote-data',

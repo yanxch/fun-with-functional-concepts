@@ -11,15 +11,15 @@ import {CommitsEffects} from 'src/state/effects/commits.effects';
 import {metaReducers, reducers} from '../state/reducers';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {CommitsWithNgrxActionListenerComponent} from './commits-with-ngrx-action-listener/commits-with-ngrx-action-listener.component';
+import {CommitsWithNgrxRemoteDataComponent} from './commits-with-ngrx-remote-data/commits-with-ngrx-remote-data.component';
 import {CommitsWithNgrxComponent} from './commits-with-ngrx/commits-with-ngrx.component';
 import {CommitsWithRemoteDataComponent} from './commits-with-remote-data/commits-with-remote-data.component';
-import {CommitsComponent} from './commits/commits.component';
-import {MaybeComponent, NoneComponent, SomeComponent} from './maybe/maybe.component';
-import {MaybeDirective} from './maybe/maybe.directive';
-import {RemoteDataDirective} from './remote-data/remote-data.directive';
-import { FailureComponent } from './failure/failure.component';
-import { CommitsWithNgrxActionListenerComponent } from './commits-with-ngrx-action-listener/commits-with-ngrx-action-listener.component';
-import { CommitsWithNgrxRemoteDataComponent } from './commits-with-ngrx-remote-data/commits-with-ngrx-remote-data.component';
+import {CommitsComponent} from './components/commits/commits.component';
+import {FailureComponent} from './components/failure/failure.component';
+import {MaybeComponent, NoneComponent, SomeComponent} from './components/maybe/maybe.component';
+import {MaybeDirective} from './components/maybe/maybe.directive';
+import {RemoteDataDirective} from './components/remote-data/remote-data.directive';
 
 
 @NgModule({

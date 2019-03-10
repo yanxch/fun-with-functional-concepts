@@ -6,7 +6,7 @@ import {LoadCommits} from 'src/state/actions/commits.actions';
 import {Failure} from 'src/state/model/failure';
 import {AppState} from 'src/state/reducers';
 import {commitsAsRemoteData} from 'src/state/selectors/commits.selectors';
-import {RemoteData} from '../remote-data/remote-data';
+import {RemoteData} from '../components/remote-data/remote-data';
 
 @Component({
   selector: 'commits-with-ngrx-remote-data',
