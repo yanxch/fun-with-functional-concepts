@@ -20,6 +20,8 @@ import {FailureComponent} from './components/failure/failure.component';
 import {MaybeComponent, NoneComponent, SomeComponent} from './components/maybe/maybe.component';
 import {MaybeDirective} from './components/maybe/maybe.directive';
 import {RemoteDataDirective} from './components/remote-data/remote-data.directive';
+import { CardComponent } from './components/card/card.component';
+import { CommitsWithServiceComponent } from './commits-with-service/commits-with-service.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {RemoteDataDirective} from './components/remote-data/remote-data.directiv
     CommitsWithRemoteDataComponent,
     FailureComponent,
     CommitsWithNgrxActionListenerComponent,
-    CommitsWithNgrxRemoteDataComponent
+    CommitsWithNgrxRemoteDataComponent,
+    CardComponent,
+    CommitsWithServiceComponent
   ],
   imports: [
     BrowserModule,

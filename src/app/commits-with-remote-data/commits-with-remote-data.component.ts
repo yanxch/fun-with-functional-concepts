@@ -10,14 +10,14 @@ export class CommitsWithRemoteDataComponent implements OnInit {
 
   username = 'yanxch';
 
-  data: Promise<Commit[]>;
+  commits: Promise<Commit[]>;
   
   constructor() { }
 
   ngOnInit() {}
 
   onSearch() {
-    this.data = readCommitsByUsername(this.username);
+    this.commits = readCommitsByUsername(this.username);
     console.log('Clicked Search');
   }
 }

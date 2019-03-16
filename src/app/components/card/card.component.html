@@ -1,8 +1,11 @@
-<mat-card class="centered github-card">
+<mat-card>
   <mat-card-header>
+    <ng-content select="card-header"></ng-content>
+    <!--
     <div mat-card-avatar class="github-avatar"></div>
     <mat-card-title>Github Commits</mat-card-title>
     <mat-card-subtitle>Search</mat-card-subtitle>
+    -->
   </mat-card-header>
   <form class="github-form">
     <mat-form-field class="github-form-field">
@@ -24,28 +27,3 @@
     </div>
   </div>
 </mat-card>
-
-
-<ng-template #notAskedTemplate>
-  <div class="text-centered">
-    <p>No data loaded yet.</p>
-    <p>Please enter a username and press "Search".</p>
-  </div>
-</ng-template>
-
-<ng-template #loadingTemplate>
-  Loading ...
-</ng-template>
-
-<ng-template #successTemplate let-commits="success">
-  <div class="text-centered" *ngIf="commits.length === 0">
-    No commits in the past months
-  </div>
-  <commits [commits]="commits"></commits>
-</ng-template>
-
-<ng-template #failureTemplate let-failure="failure">
-  <div class="text-centered">
-    <failure></failure>
-  </div>
-</ng-template>
