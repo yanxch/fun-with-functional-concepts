@@ -15,13 +15,18 @@ import {CommitsWithNgrxActionListenerComponent} from './commits-with-ngrx-action
 import {CommitsWithNgrxRemoteDataComponent} from './commits-with-ngrx-remote-data/commits-with-ngrx-remote-data.component';
 import {CommitsWithNgrxComponent} from './commits-with-ngrx/commits-with-ngrx.component';
 import {CommitsWithRemoteDataComponent} from './commits-with-remote-data/commits-with-remote-data.component';
+import {CardHeaderComponent, CardHeaderSubTitleComponent, CardHeaderTitleComponent} from './components/card/card-header.component';
+import {CardComponent} from './components/card/card.component';
+import {CenteredDirective} from './components/centered/centered.directive';
 import {CommitsComponent} from './components/commits/commits.component';
 import {FailureComponent} from './components/failure/failure.component';
+import {GithubSearchFormComponent} from './components/github-search-form/github-search-form.component';
+import {GithubSearchResultComponent} from './components/github-search-result/github-search-result.component';
 import {MaybeComponent, NoneComponent, SomeComponent} from './components/maybe/maybe.component';
 import {MaybeDirective} from './components/maybe/maybe.directive';
 import {RemoteDataDirective} from './components/remote-data/remote-data.directive';
-import { CardComponent } from './components/card/card.component';
-import { CommitsWithServiceComponent } from './commits-with-service/commits-with-service.component';
+import {CommitsWithServiceContainer} from './container/commits-with-service/commits-with-service.container';
+import {CommitsView} from './views/commits-view';
 
 
 @NgModule({
@@ -39,7 +44,14 @@ import { CommitsWithServiceComponent } from './commits-with-service/commits-with
     CommitsWithNgrxActionListenerComponent,
     CommitsWithNgrxRemoteDataComponent,
     CardComponent,
-    CommitsWithServiceComponent
+    CardHeaderComponent,
+    CardHeaderTitleComponent,
+    CardHeaderSubTitleComponent,
+    CommitsWithServiceContainer,
+    GithubSearchFormComponent,
+    GithubSearchResultComponent,
+    CenteredDirective,
+    CommitsView
   ],
   imports: [
     BrowserModule,

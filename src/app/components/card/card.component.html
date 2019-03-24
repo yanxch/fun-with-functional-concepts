@@ -1,29 +1,18 @@
 <mat-card>
-  <mat-card-header>
-    <ng-content select="card-header"></ng-content>
-    <!--
-    <div mat-card-avatar class="github-avatar"></div>
-    <mat-card-title>Github Commits</mat-card-title>
-    <mat-card-subtitle>Search</mat-card-subtitle>
-    -->
-  </mat-card-header>
-  <form class="github-form">
-    <mat-form-field class="github-form-field">
-      <div style="display: flex;">
-        <input 
-          matInput placeholder="Github Username" 
-          [(ngModel)]="username" name="username"
-          autocomplete="off">
-        <button mat-stroked-button (click)="onSearch()">Search</button>
-      </div>
-    </mat-form-field>
-  </form>
-  <div class="github-card-content">
-    <div *remoteData="commits
-      onNotAsked notAskedTemplate
-      onLoading loadingTemplate 
-      onSuccess successTemplate 
-      onFailure failureTemplate">
-    </div>
-  </div>
+  <ng-content select="card-header"></ng-content>
+  <ng-content></ng-content>
 </mat-card>
+
+<!--
+
+<ng-content select="[mat-card-avatar], [matCardAvatar]"></ng-content>
+<div class="mat-card-header-text">
+  <ng-content
+      select="mat-card-title, mat-card-subtitle,
+      [mat-card-title], [mat-card-subtitle],
+      [matCardTitle], [matCardSubtitle]"></ng-content>
+</div>
+<ng-content></ng-content>
+
+
+-->

@@ -5,9 +5,10 @@
   </card-header>
   <github-search-form (onSubmit)="search($event)"></github-search-form>
   <github-search-result>
-    <commits [commits]="commits$ | async"></commits>
-    <failure [failures]="commitsFailures$ | async"></failure>
+    <commits-with-service-container [username]="username" #container>
+      <commits [commits]="container.commits$ | async"></commits>
+      <failure [failures]="container.failures"></failure>
+    </commits-with-service-container>
   </github-search-result>
 </card>
-
 

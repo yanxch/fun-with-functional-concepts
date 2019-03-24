@@ -1,0 +1,11 @@
+<form class="github-form">
+  <mat-form-field class="github-form-field">
+    <div style="display: flex;">
+      <input 
+        matInput placeholder="Github Username" 
+        [(ngModel)]="username" name="username"
+        autocomplete="off">
+      <button mat-stroked-button (click)="onSearch()">Search</button>
+    </div>
+  </mat-form-field>
+</form>

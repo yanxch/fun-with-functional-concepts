@@ -1,20 +1,27 @@
-import {Component} from '@angular/core';
+import {Component, Attribute} from '@angular/core';
 
 @Component({
   selector: 'card-header',
   template: `
-    <!--ng-content></ng-content-->
-    <ng-content select="card-header-avatar"></ng-content>
-    <mat-card-title>
-      <ng-content select="card-header-title"></ng-content>
-    </mat-card-title>
-    <mat-card-subtitle>
-        <ng-content select="card-header-subtitle"></ng-content>
-    </mat-card-subtitle>
+    <mat-card-header>
+      <div [ngClass]="avatar" mat-card-avatar></div>
+      <mat-card-title>
+        <ng-content select="card-header-title"></ng-content>
+      </mat-card-title>
+      <mat-card-subtitle>
+          <ng-content select="card-header-subtitle"></ng-content>
+      </mat-card-subtitle>
+    </mat-card-header>
   `,
   styleUrls: ['./card-header.scss']
 })
-export class CardHeaderComponent {}
+export class CardHeaderComponent {
+  avatar: string;
+
+  constructor(@Attribute('avatar') avatar: string) {
+    this.avatar = avatar; 
+  }
+}
 //
 //
 @Component({

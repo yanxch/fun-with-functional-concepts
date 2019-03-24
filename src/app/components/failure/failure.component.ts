@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {Failure} from 'src/state/model/failure';
 
 @Component({
   selector: 'failure',
   templateUrl: './failure.component.html',
-  styleUrls: ['./failure.component.scss']
+  styleUrls: ['./failure.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FailureComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  failures: Failure[] = [];
 
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
 }

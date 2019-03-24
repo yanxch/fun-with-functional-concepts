@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommitsWithServiceComponent } from './commits-with-service.component';
+import { CommitsWithServiceContainer } from './commits-with-service.container';
 
 describe('CommitsWithServiceComponent', () => {
-  let component: CommitsWithServiceComponent;
-  let fixture: ComponentFixture<CommitsWithServiceComponent>;
+  let component: CommitsWithServiceContainer;
+  let fixture: ComponentFixture<CommitsWithServiceContainer>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommitsWithServiceComponent ]
+      declarations: [ CommitsWithServiceContainer ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommitsWithServiceComponent);
+    fixture = TestBed.createComponent(CommitsWithServiceContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

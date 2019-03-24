@@ -4,12 +4,12 @@ import {CommitsWithNgrxActionListenerComponent} from './commits-with-ngrx-action
 import {CommitsWithNgrxRemoteDataComponent} from './commits-with-ngrx-remote-data/commits-with-ngrx-remote-data.component';
 import {CommitsWithNgrxComponent} from './commits-with-ngrx/commits-with-ngrx.component';
 import {CommitsWithRemoteDataComponent} from './commits-with-remote-data/commits-with-remote-data.component';
-import {CommitsWithServiceComponent} from './commits-with-service/commits-with-service.component';
+import {CommitsView} from './views/commits-view';
 
 const routes: Routes = [
   {
     path: 'commits-with-service',
-    component: CommitsWithServiceComponent
+    component: CommitsView
   },
   {
     path: 'commits-with-remote-data',

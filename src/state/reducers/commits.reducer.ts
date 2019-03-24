@@ -22,7 +22,8 @@ export function reducer(
     case Commits.CommitActionTypes.LoadCommits: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        errors: []
       };
     }
 
