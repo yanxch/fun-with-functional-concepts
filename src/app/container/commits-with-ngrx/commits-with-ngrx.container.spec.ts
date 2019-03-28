@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommitsWithNgrxComponent } from './commits-with-ngrx.component';
+import { CommitsWithNgrxContainer } from './commits-with-ngrx.container';
 
 describe('CommitsWithNgrxComponent', () => {
-  let component: CommitsWithNgrxComponent;
-  let fixture: ComponentFixture<CommitsWithNgrxComponent>;
+  let component: CommitsWithNgrxContainer;
+  let fixture: ComponentFixture<CommitsWithNgrxContainer>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommitsWithNgrxComponent ]
+      declarations: [ CommitsWithNgrxContainer ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommitsWithNgrxComponent);
+    fixture = TestBed.createComponent(CommitsWithNgrxContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,9 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CommitsWithNgrxActionListenerComponent} from './commits-with-ngrx-action-listener/commits-with-ngrx-action-listener.component';
-import {CommitsWithNgrxRemoteDataComponent} from './commits-with-ngrx-remote-data/commits-with-ngrx-remote-data.component';
-import {CommitsWithNgrxComponent} from './commits-with-ngrx/commits-with-ngrx.component';
-import {CommitsWithRemoteDataComponent} from './commits-with-remote-data/commits-with-remote-data.component';
 import {CommitsView} from './views/commits-view';
 
 const routes: Routes = [
@@ -13,19 +9,19 @@ const routes: Routes = [
   },
   {
     path: 'commits-with-remote-data',
-    component: CommitsWithRemoteDataComponent
+    component: CommitsView
   },
   {
     path: 'commits-with-ngrx',
-    component: CommitsWithNgrxComponent
+    component: CommitsView
   },
   {
     path: 'commits-with-ngrx-action-listener',
-    component: CommitsWithNgrxActionListenerComponent
+    component: CommitsView
   },
   {
     path: 'commits-with-ngrx-remote-data',
-    component: CommitsWithNgrxRemoteDataComponent
+    component: CommitsView
   },
   {
     path: '',

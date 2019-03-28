@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommitsWithNgrxActionListenerComponent } from './commits-with-ngrx-action-listener.component';
+import { CommitsWithNgrxActionListenerContainer } from './commits-with-ngrx-action-listener.container';
 
 describe('CommitsWithNgrxActionListenerComponent', () => {
-  let component: CommitsWithNgrxActionListenerComponent;
-  let fixture: ComponentFixture<CommitsWithNgrxActionListenerComponent>;
+  let component: CommitsWithNgrxActionListenerContainer;
+  let fixture: ComponentFixture<CommitsWithNgrxActionListenerContainer>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommitsWithNgrxActionListenerComponent ]
+      declarations: [ CommitsWithNgrxActionListenerContainer ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommitsWithNgrxActionListenerComponent);
+    fixture = TestBed.createComponent(CommitsWithNgrxActionListenerContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

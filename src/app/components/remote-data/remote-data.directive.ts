@@ -1,4 +1,6 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef, OnChanges, SimpleChanges} from '@angular/core';
+import {RemoteData} from './remote-data';
+import {onChange} from 'src/app/util/input-changed';
 
 export class RemoteDataContext<S,F> {
   success: S;
@@ -13,7 +15,7 @@ export class RemoteDataDirective<S,F> implements OnInit, OnChanges {
   context = new RemoteDataContext<S,F>();
 
   @Input()
-  remoteData: Promise<S>;
+  remoteData: RemoteData<S, F>;
 
   @Input()
   remoteDataOnSuccess: TemplateRef<RemoteDataContext<S,F>>;
@@ -27,29 +29,30 @@ export class RemoteDataDirective<S,F> implements OnInit, OnChanges {
   @Input()
   remoteDataOnLoading: TemplateRef<RemoteDataContext<S,F>>;
 
-  constructor(private viewContainer: ViewContainerRef) {
-  }
+  constructor(private viewContainer: ViewContainerRef) {}
 
-  ngOnInit() {
-    if (this.remoteData) {
-      this.loadData();
-    } else {
-      this.renderNotAskedTemplate();
-    }
-  }
+  ngOnInit() {}
 
   ngOnChanges({ remoteData }: SimpleChanges) {
-    if (!remoteData.firstChange && remoteData.currentValue != remoteData.previousValue) {
-      this.loadData();
-    }
+    onChange(remoteData, this.render);
   }
 
-  private loadData() {
-    this.renderLoadingTemplate();
-    this.remoteData.then(
-      data => this.renderSuccessTemplate(data),
-      error => this.renderFailureTemplate(error)
-    );
+  private render(remoteData: any) {
+    if (remoteData.loading) {
+      this.renderLoadingTemplate();
+    }
+
+    if (remoteData.success) {
+      this.renderSuccessTemplate(remoteData.success);
+    }
+
+    if (remoteData.failure) {
+      this.renderFailureTemplate(remoteData.failure);
+    }
+
+    if (remoteData.notAsked) {
+      this.renderNotAskedTemplate();
+    }
   }
 
   private renderLoadingTemplate() {

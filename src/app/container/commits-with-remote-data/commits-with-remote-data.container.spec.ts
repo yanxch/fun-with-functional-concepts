@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommitsWithRemoteDataComponent } from './commits-with-remote-data.component';
+import { CommitsWithRemoteDataContainer } from './commits-with-remote-data.container';
 
 describe('CommitsWithRemoteDataComponent', () => {
-  let component: CommitsWithRemoteDataComponent;
-  let fixture: ComponentFixture<CommitsWithRemoteDataComponent>;
+  let component: CommitsWithRemoteDataContainer;
+  let fixture: ComponentFixture<CommitsWithRemoteDataContainer>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommitsWithRemoteDataComponent ]
+      declarations: [ CommitsWithRemoteDataContainer ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommitsWithRemoteDataComponent);
+    fixture = TestBed.createComponent(CommitsWithRemoteDataContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

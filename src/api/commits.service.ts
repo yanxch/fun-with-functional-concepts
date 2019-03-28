@@ -15,21 +15,25 @@ import {map} from 'rxjs/operators';
 export class CommitsService {
   constructor(private http: HttpClient) {}
 
-  readCommitsByUsername(username: string): Observable<Commit[]> {
+  readCommitsByUsername(username: string): Promise<Commit[]> {
     return this.http.get(`https://api.github.com/users/${username}/events`)
-      .pipe(
-        map((response: any[]) => mapToCommits(response))
-      );
+      .pipe(map(toCommits))
+      .toPromise();
+  }
+
+  readCommitsByUsername$(username: string): Observable<Commit[]> {
+    return this.http.get(`https://api.github.com/users/${username}/events`)
+      .pipe(map(toCommits));
   }
 }
 
-function mapToCommits(response: any[]) {
+function toCommits(response: any[]) {
   const isPushEvent = (entry) => entry.type === 'PushEvent';
 
   return response
     .filter(isPushEvent)
     .reduce((commits, pushEvent) => 
-      commits.concat(pushEvent.payload.commits.map(commit => 
+      commits.concat(pushEvent.payload.commits.map(commit => // flatten commits
         new Commit(commit.sha, 
             pushEvent.repo.name, 
             commit.author.name, 
