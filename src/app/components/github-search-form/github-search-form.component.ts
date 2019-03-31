@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'github-search-form',
@@ -7,7 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class GithubSearchFormComponent implements OnInit {
 
-  username = 'yanxch';
+  @Input()
+  username: string;
 
   @Output()
   onSubmit = new EventEmitter<string>();

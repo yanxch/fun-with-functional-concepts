@@ -1,15 +1,13 @@
 <!-- 
 1. Commits Loaded By Service Container
 -->
-<!--
-<card centered> 
+<!--card centered> 
   <card-header avatar="github-avatar">
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="search($event)"></github-search-form>
+  <github-search-form (onSubmit)="username = $event"></github-search-form>
   <github-search-result>
-    // Loading commits is done by the container:
     <commits-with-service-container [username]="username" #container>
       <commits [commits]="container.commits"></commits>
       <failure [failures]="container.failures"></failure>
@@ -26,7 +24,7 @@
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="search($event)"></github-search-form>
+  <github-search-form (onSubmit)="username = $event"></github-search-form>
   <github-search-result>
     <commits-with-ngrx-container [username]="username" #container>
       <commits [commits]="container.commits$ | async"></commits>
@@ -38,21 +36,20 @@
 <!--
   3. With action listener
 -->
-<!--card centered> 
+<card centered> 
   <card-header avatar="github-avatar">
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="search($event)"></github-search-form>
+  <github-search-form [username]="username$ | async" (onSubmit)="search($event)"></github-search-form>
   <github-search-result>
-    <commits-with-ngrx-action-listener-container [username]="username" #container>
+    <commits-with-ngrx-action-listener-container [username]="username$ | async" #container>
       <commits [commits]="container.commits$ | async"></commits>
       <failure [failures]="container.failures$ | async"></failure>
       <loading [isLoading]="container.loading$ | async"></loading>
     </commits-with-ngrx-action-listener-container>
   </github-search-result>
-</card-->
-  
+</card>
 
 <!--
   4. Remote Data
@@ -75,12 +72,12 @@
 <!--
   5. Remote Data with NGRX
 -->
-<card centered> 
+<!--card centered> 
   <card-header avatar="github-avatar">
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="search($event)"></github-search-form>
+  <github-search-form (onSubmit)="username = $event"></github-search-form>
   <github-search-result>
     <commits-with-ngrx-remote-data-container [username]="username" #container>
       <commits [commits]="(container.commits$ | async).success"></commits>
@@ -88,4 +85,4 @@
       <loading [isLoading]="(container.commits$ | async).loading"></loading>
     </commits-with-ngrx-remote-data-container>
   </github-search-result>
-</card>
+</card-->

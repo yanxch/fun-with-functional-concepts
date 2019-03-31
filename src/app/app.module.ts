@@ -28,6 +28,8 @@ import {CommitsWithServiceContainer} from './container/commits-with-service/comm
 import {CommitsView} from './views/commits-view';
 import {CommitsWithRemoteDataContainer} from './container/commits-with-remote-data/commits-with-remote-data.container';
 import {CommitsWithNgrxRemoteDataContainer} from './container/commits-with-ngrx-remote-data/commits-with-ngrx-remote-data.container';
+import {RouteComponent} from './components/router/route.component';
+import {RouteParamsDirective} from './components/router/route-params.directive';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import {CommitsWithNgrxRemoteDataContainer} from './container/commits-with-ngrx-
     GithubSearchResultComponent,
     CenteredDirective,
     CommitsView,
-    LoadingComponent
+    LoadingComponent,
+    RouteComponent,
+    RouteParamsDirective
   ],
   imports: [
     BrowserModule,

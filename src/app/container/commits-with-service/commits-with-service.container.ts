@@ -10,7 +10,7 @@ import {Failure} from '../../../state/model/failure';
  * Does the container handles the error or does it propagate it? You decide!
  * 
  * 
- * A Container does not have Styles nor any template for himself!
+ * A container does not have styles nor any template for itself!
  *  
  **/
 @Component({
