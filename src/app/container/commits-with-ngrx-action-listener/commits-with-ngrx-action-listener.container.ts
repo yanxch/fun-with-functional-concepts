@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Actions, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {merge, Observable} from 'rxjs';
+import {map, mapTo, tap} from 'rxjs/operators';
 import {Commit} from 'src/api/commits.api';
+import {onChange} from 'src/app/util/input-changed';
 import {CommitActionTypes, CommitsActionsUnion, LoadCommits} from 'src/state/actions/commits.actions';
 import {Failure} from 'src/state/model/failure';
 import {AppState} from 'src/state/reducers';
 import {commits, commitsLoadingState} from 'src/state/selectors/commits.selectors';
-import {onChange} from 'src/app/util/input-changed';
 
 @Component({
   selector: 'commits-with-ngrx-action-listener-container',
@@ -24,20 +24,16 @@ export class CommitsWithNgrxActionListenerContainer implements OnChanges {
   commits$: Observable<Commit[]>;
   //
   // Local State
-  failures$ = new BehaviorSubject<Failure[]>([]);
+  failures$: Observable<Failure[]>;
   loading$: Observable<boolean>;
 
   constructor(private store: Store<AppState>,
               private actions$: Actions<CommitsActionsUnion>) {
     this.commits$ = this.store.select(commits);
-    this.loading$ = this.store.select(commitsLoadingState);
+    // this.loading$ = this.store.select(commitsLoadingState);
 
-    this.actions$
-      .pipe(
-        ofType(CommitActionTypes.LoadCommitsFailure),
-        map(() => [new Failure('An error occured')]),
-      )
-      .subscribe(this.failures$);
+    this.loading$ = this.actions$.pipe(loading(CommitActionTypes.LoadCommits));
+    this.failures$ = this.actions$.pipe(failures(CommitActionTypes.LoadCommits));
   }
    
   ngOnChanges({username}: SimpleChanges) {
@@ -45,7 +41,17 @@ export class CommitsWithNgrxActionListenerContainer implements OnChanges {
   }
 
   loadCommits = (username) => {
-    this.failures$.next([]); 
     this.store.dispatch(new LoadCommits({ username: username }));
   }
 }
+
+const loading = (actiontype: string) => (source: Observable<any>) => merge(
+  source.pipe(ofType(actiontype), tap(a => console.log('Loading', a)), mapTo(true)),
+  source.pipe(ofType(actiontype + ' Failure'), tap(a => console.log('Loading Error', a)), mapTo(false)),
+  source.pipe(ofType(actiontype + ' Success'), tap(a => console.log('Loading Success', a)), mapTo(false))
+);
+
+const failures = (actiontype: string) => (source: Observable<any>) => merge(
+  source.pipe(ofType(actiontype), mapTo([])),
+  source.pipe(ofType(actiontype + ' Failure'), map((action: any) => action.payload.errors))
+);

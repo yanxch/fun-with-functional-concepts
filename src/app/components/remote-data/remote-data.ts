@@ -15,7 +15,10 @@ export type Loading = {
   loading: true;
 }
 
-export type RemoteData<S, F> = Success<S> | Failure<F> | NotAsked | Loading; 
+export type RemoteData<S, F> = NotAsked 
+| Loading
+| Success<S>
+| Failure<F>; 
 //
 //
 export const notAsked: NotAsked = {

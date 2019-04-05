@@ -4,8 +4,8 @@ import {Failure} from '../model/failure';
 
 export enum CommitActionTypes {
   LoadCommits = '[API Commits] Load',
-  LoadCommitsSuccess = '[API Commmits] Loading Success',
-  LoadCommitsFailure = '[API Commits] Loading Failure',
+  LoadCommitsSuccess = '[API Commits] Load Success',
+  LoadCommitsFailure = '[API Commits] Load Failure',
 }
 
 export class LoadCommits implements Action {
@@ -27,3 +27,7 @@ export class LoadCommitsFailure implements Action {
 }
 
 export type CommitsActionsUnion = LoadCommits | LoadCommitsSuccess | LoadCommitsFailure; 
+
+//{ type: 'FETCH_POSTS' }
+//{ type: 'FETCH_POSTS', status: 'error', error: 'Oops' }
+//{ type: 'FETCH_POSTS', status: 'success', response: { ... } }
