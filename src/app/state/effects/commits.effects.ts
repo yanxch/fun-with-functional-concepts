@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {of} from 'rxjs';
 import {catchError, map, mergeMap, debounceTime, tap} from 'rxjs/operators';
-import {CommitsService} from 'src/api/commits.service';
 import {CommitActionTypes, CommitsActionsUnion, LoadCommitsFailure, LoadCommitsSuccess} from '../actions/commits.actions';
 import {Failure} from '../model/failure';
+import {CommitsService} from '@api/commits.service';
 
 @Injectable()
 export class CommitsEffects {

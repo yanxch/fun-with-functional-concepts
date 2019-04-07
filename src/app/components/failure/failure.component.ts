@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import {Failure} from 'src/state/model/failure';
+import {Failure} from '@state/model/failure';
 
 @Component({
   selector: 'failure',

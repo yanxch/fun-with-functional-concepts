@@ -6,9 +6,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
-import {CommitsService} from 'src/api/commits.service';
-import {CommitsEffects} from 'src/state/effects/commits.effects';
-import {metaReducers, reducers} from '../state/reducers';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CardHeaderComponent, CardHeaderSubTitleComponent, CardHeaderTitleComponent} from './components/card/card-header.component';
@@ -30,6 +27,9 @@ import {CommitsWithRemoteDataContainer} from './container/commits-with-remote-da
 import {CommitsWithNgrxRemoteDataContainer} from './container/commits-with-ngrx-remote-data/commits-with-ngrx-remote-data.container';
 import {RouteComponent} from './components/router/route.component';
 import {RouteParamsDirective} from './components/router/route-params.directive';
+import {reducers, metaReducers} from '@state/reducers';
+import {CommitsEffects} from '@state/effects/commits.effects';
+import {CommitsService} from '@api/commits.service';
 
 
 @NgModule({

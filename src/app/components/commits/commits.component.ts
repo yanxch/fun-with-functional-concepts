@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Commit} from 'src/api/commits.api';
+import {Commit} from '@api/commits.api';
 
 @Component({
   selector: 'commits',

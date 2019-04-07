@@ -5,7 +5,7 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 import * as commits from '../reducers/commits.reducer'
 import * as commits2 from '../reducers/commits-remote-data.reducer'

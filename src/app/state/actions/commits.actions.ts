@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {Commit} from 'src/api/commits.api';
-import {Failure} from '../model/failure';
+import {Commit} from '@api/commits.api';
+import {Failure} from '@state/model/failure';
 
 export enum CommitActionTypes {
   LoadCommits = '[API Commits] Load',

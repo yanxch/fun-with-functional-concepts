@@ -1,5 +1,5 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef, OnChanges, SimpleChanges} from '@angular/core';
-import {RemoteData} from './remote-data';
+import {RemoteData} from '../../state/model/remote-data';
 
 export class RemoteDataContext<S,F> {
   success: S;

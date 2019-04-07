@@ -1,12 +1,12 @@
 import {Component, OnInit, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Commit} from 'src/api/commits.api';
-import {LoadCommits} from 'src/state/actions/commits.actions';
-import {Failure} from 'src/state/model/failure';
-import {AppState} from 'src/state/reducers';
-import {commits, commitsFailuerState, commitsLoadingState} from 'src/state/selectors/commits.selectors';
-import {onChange} from 'src/app/util/input-changed';
+import {Commit} from '@api/commits.api';
+import {Failure} from '@state/model/failure';
+import {AppState} from '@state/reducers';
+import {commits, commitsLoadingState, commitsFailuerState} from '@state/selectors/commits.selectors';
+import {onChange} from '@uitl/input-changed';
+import {LoadCommits} from '@state/actions/commits.actions';
 
 @Component({
   selector: 'commits-with-ngrx-container',

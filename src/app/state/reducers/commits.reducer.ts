@@ -1,14 +1,17 @@
 import * as Commits from '../actions/commits.actions';
-import {Commit} from 'src/api/commits.api';
 import {Failure} from '../model/failure';
-import {RemoteData, notAsked, loading, success, failure} from 'src/app/components/remote-data/remote-data';
+import {Commit} from '@api/commits.api';
 
 export interface State {
-  commits: RemoteData<Commit[], Failure[]>;
+  loading: boolean;
+  errors: Failure[];
+  commits: Commit[];
 }
 
 export const initialState: State = {
-  commits: notAsked
+  loading: false,
+  errors: [],
+  commits: null
 };
 
 export function reducer(
@@ -19,21 +22,26 @@ export function reducer(
     case Commits.CommitActionTypes.LoadCommits: {
       return {
         ...state,
-        commits: loading
+        loading: true,
+        commits: null,
+        errors: []
       };
     }
 
     case Commits.CommitActionTypes.LoadCommitsSuccess: {
       return {
         ...state,
-        commits: success(action.payload.commits)
+        loading: false,
+        commits: action.payload.commits
       };
     }
 
     case Commits.CommitActionTypes.LoadCommitsFailure: {
       return {
         ...state,
-        commits: failure(action.payload.errors)
+        commits: null,
+        loading: false,
+        errors: action.payload.errors
       };
     }
 

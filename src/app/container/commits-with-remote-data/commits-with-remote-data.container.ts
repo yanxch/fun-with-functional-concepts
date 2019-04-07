@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {Commit, readCommitsByUsername} from 'src/api/commits.api';
-import {failure, loading, notAsked, RemoteData, success} from 'src/app/components/remote-data/remote-data';
-import {onChange} from 'src/app/util/input-changed';
-import {Failure} from 'src/state/model/failure';
+import {failure, loading, notAsked, RemoteData, success} from '@state/model/remote-data';
+import {Commit, readCommitsByUsername} from '@api/commits.api';
+import {Failure} from '@state/model/failure';
+import {onChange} from '@uitl/input-changed';
 
 
 @Component({

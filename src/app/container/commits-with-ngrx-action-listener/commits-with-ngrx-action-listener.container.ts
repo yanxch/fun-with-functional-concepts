@@ -2,13 +2,13 @@ import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} fro
 import {Actions} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Commit} from 'src/api/commits.api';
-import {onChange} from 'src/app/util/input-changed';
-import {CommitActionTypes, CommitsActionsUnion, LoadCommits} from 'src/state/actions/commits.actions';
-import {Failure} from 'src/state/model/failure';
-import {AppState} from 'src/state/reducers';
-import {selectFailures, selectLoading} from 'src/state/selectors/commits-action.selectors';
-import {commits} from 'src/state/selectors/commits.selectors';
+import {Commit} from '@api/commits.api';
+import {Failure} from '@state/model/failure';
+import {AppState} from '@state/reducers';
+import {CommitsActionsUnion, CommitActionTypes, LoadCommits} from '@state/actions/commits.actions';
+import {commits} from '@state/selectors/commits.selectors';
+import {selectLoading, selectFailures} from '@state/selectors/commits-action.selectors';
+import {onChange} from '@uitl/input-changed';
 
 @Component({
   selector: 'commits-with-ngrx-action-listener-container',

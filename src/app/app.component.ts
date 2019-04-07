@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {readCommitsByUsername, Commit} from 'src/api/commits.api';
 
 @Component({
   selector: 'app-root',
