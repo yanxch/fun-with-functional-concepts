@@ -6,10 +6,16 @@ import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@a
   styleUrls: ['./loading.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoadingComponent {
+export class LoadingComponent implements OnInit {
 
   @Input()
   isLoading = false;
 
-  constructor() { }
+  constructor() {
+    console.log('init loading');
+   }
+
+   ngOnInit() {
+     console.log('oninit loading');
+   }
 }

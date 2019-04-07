@@ -1,5 +1,8 @@
-<mat-list>
+<div class="text-centered" *ngIf="commits?.length === 0">
+  No commits done lately!
+</div>
 
+<mat-list>
   <mat-list-item *ngFor="let commit of commits">
     <mat-icon matListIcon mat-card-avatar class="commit-avatar"></mat-icon>
     <mat-card-subtitle mat-line>{{commit.repo}}</mat-card-subtitle>

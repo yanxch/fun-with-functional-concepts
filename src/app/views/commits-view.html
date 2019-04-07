@@ -6,37 +6,39 @@
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="username = $event"></github-search-form>
+  <github-search-form [username]="username$ | async" (onSubmit)="search($event)"></github-search-form>
   <github-search-result>
-    <commits-with-service-container [username]="username" #container>
+    <commits-with-service-container [username]="username$ | async" #container>
       <commits [commits]="container.commits"></commits>
       <failure [failures]="container.failures"></failure>
     </commits-with-service-container>
   </github-search-result>
 </card-->
 
-
 <!-- 
 2. Commits Loaded By NgRx Container
 -->
-<!--card centered> 
+<card centered> 
   <card-header avatar="github-avatar">
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="username = $event"></github-search-form>
+  <github-search-form [username]="username$ | async" (onSubmit)="search($event)"></github-search-form>
   <github-search-result>
-    <commits-with-ngrx-container [username]="username" #container>
+    <commits-with-ngrx-container [username]="username$ | async" #container>
       <commits [commits]="container.commits$ | async"></commits>
       <failure [failures]="container.failures$ | async"></failure>
+      <loading [isLoading]="container.loading$ | async"></loading>
     </commits-with-ngrx-container>
   </github-search-result>
-</card-->
+</card>
   
 <!--
   3. With action listener
+
+  (/)
 -->
-<card centered> 
+<!--card centered> 
   <card-header avatar="github-avatar">
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
@@ -49,7 +51,7 @@
       <loading [isLoading]="container.loading$ | async"></loading>
     </commits-with-ngrx-action-listener-container>
   </github-search-result>
-</card>
+</card-->
 
 <!--
   4. Remote Data
@@ -59,9 +61,9 @@
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="search($event)"></github-search-form>
+  <github-search-form [username]="username$ | async" (onSubmit)="search($event)"></github-search-form>
   <github-search-result>
-    <commits-with-remote-data-container [username]="username" #container>
+    <commits-with-remote-data-container [username]="username$ | async" #container>
       <commits [commits]="container.commits.success"></commits>
       <failure [failures]="container.commits.failure"></failure>
       <loading [isLoading]="container.commits.loading"></loading>
@@ -77,9 +79,9 @@
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
   </card-header>
-  <github-search-form (onSubmit)="username = $event"></github-search-form>
+  <github-search-form [username]="username$ | async" (onSubmit)="search($event)"></github-search-form>
   <github-search-result>
-    <commits-with-ngrx-remote-data-container [username]="username" #container>
+    <commits-with-ngrx-remote-data-container [username]="username$ | async" #container>
       <commits [commits]="(container.commits$ | async).success"></commits>
       <failure [failures]="(container.commits$ | async).failure"></failure>
       <loading [isLoading]="(container.commits$ | async).loading"></loading>

@@ -11,7 +11,7 @@ export interface State {
 export const initialState: State = {
   loading: false,
   errors: [],
-  commits: []
+  commits: null
 };
 
 export function reducer(
@@ -23,6 +23,7 @@ export function reducer(
       return {
         ...state,
         loading: true,
+        commits: null,
         errors: []
       };
     }
@@ -38,7 +39,7 @@ export function reducer(
     case Commits.CommitActionTypes.LoadCommitsFailure: {
       return {
         ...state,
-        commits: [],
+        commits: null,
         loading: false,
         errors: action.payload.errors
       };
