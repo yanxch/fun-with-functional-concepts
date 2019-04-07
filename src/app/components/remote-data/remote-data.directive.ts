@@ -1,6 +1,4 @@
-import {Directive, Input, OnInit, TemplateRef, ViewContainerRef, OnChanges, SimpleChanges} from '@angular/core';
-import {RemoteData} from '../../state/model/remote-data';
-import {onChange} from '@uitl/input-changed';
+import {Directive, OnChanges, OnInit} from '@angular/core';
 
 export class RemoteDataContext<S,F> {
   success: S;
@@ -10,9 +8,9 @@ export class RemoteDataContext<S,F> {
 @Directive({
   selector: '[remoteData]'
 })
-export class RemoteDataDirective<S,F> implements OnInit, OnChanges {
+export class RemoteDataDirective<S,F> /*implements OnInit, OnChanges*/ {
 
-  context = new RemoteDataContext<S,F>();
+  /*context = new RemoteDataContext<S,F>();
 
   @Input()
   remoteData: RemoteData<S, F>;
@@ -75,6 +73,6 @@ export class RemoteDataDirective<S,F> implements OnInit, OnChanges {
   private renderNotAskedTemplate() {
     this.viewContainer.clear();
     this.viewContainer.createEmbeddedView(this.remoteDataOnNotAsked, this.context);
-  }
+  }*/ø
 }
 
