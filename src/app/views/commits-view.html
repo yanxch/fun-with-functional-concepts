@@ -18,7 +18,7 @@
 <!-- 
 2. Commits Loaded By NgRx Container
 -->
-<card centered> 
+<!--card centered> 
   <card-header avatar="github-avatar">
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
@@ -31,14 +31,14 @@
       <loading [isLoading]="container.loading$ | async"></loading>
     </commits-with-ngrx-container>
   </github-search-result>
-</card>
+</card-->
   
 <!--
   3. With action listener
 
   (/)
 -->
-<!--card centered> 
+<card centered> 
   <card-header avatar="github-avatar">
     <card-header-title>Github Commits</card-header-title>
     <card-header-subtitle>Search</card-header-subtitle>
@@ -51,7 +51,7 @@
       <loading [isLoading]="container.loading$ | async"></loading>
     </commits-with-ngrx-action-listener-container>
   </github-search-result>
-</card-->
+</card>
 
 <!--
   4. Remote Data

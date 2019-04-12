@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Actions} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 import {Commit} from '@api/commits.api';
 import {Failure} from '@state/model/failure';
 import {AppState} from '@state/reducers';
@@ -22,14 +22,14 @@ export class CommitsWithNgrxActionListenerContainer implements OnChanges {
 
   commits$: Observable<Commit[]>;
   failures$: Observable<Failure[]>;
-  loading$: Observable<boolean>;
+  loading$ = new BehaviorSubject(true);
 
   constructor(private store: Store<AppState>,
               private actions$: Actions<CommitsActionsUnion>) {
     this.commits$ = this.store.select(commits);
 
-    this.loading$ = this.actions$.pipe(selectLoading(CommitActionTypes.LoadCommits));
     this.failures$ = this.actions$.pipe(selectFailures(CommitActionTypes.LoadCommits));
+    this.actions$.pipe(selectLoading(CommitActionTypes.LoadCommits)).subscribe(this.loading$);
   }
    
   ngOnChanges({username}: SimpleChanges) {
